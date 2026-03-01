@@ -10,6 +10,10 @@ param(
 $RepoRaw = "https://raw.githubusercontent.com/andychang0121/dotnet-skills/main"
 $RepoUrl = "https://github.com/andychang0121/dotnet-skills.git"
 
+# 修正中文亂碼問題
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$OutputEncoding = [System.Text.Encoding]::UTF8
+
 # 標題
 Write-Host ""
 Write-Host "==============================" -ForegroundColor Cyan
@@ -21,19 +25,26 @@ Write-Host ""
 if ($ProjectPath -eq "") {
     Write-Host "請輸入專案資料夾路徑（直接按 Enter 為目前目錄 '$((Get-Location).Path)'）:" -ForegroundColor Yellow
     $inputPath = Read-Host "> "
-    $ProjectPath = if ($inputPath -eq "") { (Get-Location).Path } else { $inputPath }
+    $ProjectPath = if (([string]::IsNullOrWhiteSpace($inputPath))) { (Get-Location).Path } else { $inputPath }
 }
 
-# 驗證路徑
+# 驗證並建立路徑
 if (-not (Test-Path $ProjectPath)) {
-    Write-Host "路徑不存在：$ProjectPath" -ForegroundColor Red
-    Write-Host "正在建立目錄..." -ForegroundColor Yellow
-    New-Item -ItemType Directory -Path $ProjectPath -Force | Out-Null
+    Write-Host "⚠️ 注意：指定的路徑不存在：$ProjectPath" -ForegroundColor Yellow
+    Write-Host "🔧 正在為您建立該目錄..." -ForegroundColor Cyan
+    try {
+        New-Item -ItemType Directory -Path $ProjectPath -Force | Out-Null
+        Write-Host "✅ 目錄建立成功！" -ForegroundColor Green
+    }
+    catch {
+        Write-Host "❌ 建立目錄失敗，請檢查權限或路徑格式。" -ForegroundColor Red
+        exit 1
+    }
 }
 
 $ProjectPath = (Resolve-Path $ProjectPath).Path
 Write-Host ""
-Write-Host "  專案路徑：$ProjectPath" -ForegroundColor Green
+Write-Host "  最終安裝路徑：$ProjectPath" -ForegroundColor Green
 Write-Host ""
 
 # 詢問 AI 工具
@@ -129,7 +140,8 @@ $RouterContent = @"
 if (Test-Path $ConfigTarget) {
     Add-Content -Path $ConfigTarget -Value "`n`n$RouterContent"
     Write-Host "  ✅ 路由設定已追加至：$ConfigTarget" -ForegroundColor Green
-} else {
+}
+else {
     Set-Content -Path $ConfigTarget -Value $RouterContent
     Write-Host "  ✅ 設定檔已建立：$ConfigTarget" -ForegroundColor Green
 }

@@ -18,7 +18,7 @@
 **⭐ 方式一：從 GitHub 線上安裝（當你的 Repo 已設為公開時使用）**
 
 ```powershell
-PowerShell -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/andychang0121/dotnet-skills/main/scripts/install.ps1 | iex"
+PowerShell -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/andychang0121/dotnet-skills/master/scripts/install.ps1 | iex"
 ```
 
 **⭐ 方式二：本機直接安裝（如果你已 Clone 此 Repo 到本機，可直接執行腳本）**
