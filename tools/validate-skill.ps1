@@ -75,7 +75,8 @@ function Test-SkillFile {
         Write-Result "Invalid naming: $FileName" "Error"
         $FileLog += "  [ERR] Invalid naming: $FileName"
         $HasError = $true
-    } else {
+    }
+    else {
         Write-Result "File naming OK" "Success"
         $FileLog += "  [OK] File naming OK"
     }
@@ -93,13 +94,15 @@ function Test-SkillFile {
             if ($YamlContent -match "^$field\s*:") {
                 Write-Result "  Field: $field" "Success"
                 $FileLog += "    [OK] $field"
-            } else {
+            }
+            else {
                 Write-Result "  Missing: $field" "Error"
                 $FileLog += "    [ERR] $field"
                 $HasError = $true
             }
         }
-    } else {
+    }
+    else {
         Write-Result "Missing YAML Front Matter" "Error"
         $FileLog += "  [ERR] Missing YAML Front Matter"
         $HasError = $true
@@ -110,7 +113,8 @@ function Test-SkillFile {
         if ($Content -match $section) {
             Write-Result "  Section: $section" "Success"
             $FileLog += "    [OK] Section: $section"
-        } else {
+        }
+        else {
             Write-Result "  Missing: $section" "Error"
             $FileLog += "    [ERR] Section: $section"
             $HasError = $true
@@ -121,7 +125,8 @@ function Test-SkillFile {
     if ($Content -match "```csharp") {
         Write-Result "C# code block found" "Success"
         $FileLog += "  [OK] C# code block found"
-    } else {
+    }
+    else {
         Write-Result "No C# code block" "Warning"
         $FileLog += "  [WARN] No C# code block"
     }
@@ -151,15 +156,18 @@ if (Test-Path $Path -PathType Container) {
         if ($ErrorFound) {
             $FailCount++
             $HasGlobalError = $true
-        } else {
+        }
+        else {
             $PassCount++
         }
     }
-} elseif (Test-Path $Path -PathType Leaf) {
+}
+elseif (Test-Path $Path -PathType Leaf) {
     $TotalFiles = 1
     $ErrorFound = Test-SkillFile -FilePath $Path
     if ($ErrorFound) { $FailCount++; $HasGlobalError = $true } else { $PassCount++ }
-} else {
+}
+else {
     Write-Result "Invalid path: $Path" "Error"
     exit 1
 }
@@ -177,7 +185,8 @@ $LogContent += "Failed: $FailCount"
 if ($HasGlobalError) {
     Write-Result "VALIDATION FAILED ($FailCount/$TotalFiles)" "Error"
     $LogContent += "RESULT: FAILED"
-} else {
+}
+else {
     Write-Result "VALIDATION PASSED ($TotalFiles/$TotalFiles)" "Success"
     $LogContent += "RESULT: PASSED"
 }
