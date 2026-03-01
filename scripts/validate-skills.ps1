@@ -1,83 +1,137 @@
-# dotnet-skills 驗證腳本
-# 驗證所有 Skill 結構完整性
-# 使用方式：.\scripts\validate-skills.ps1
+<#
+.SYNOPSIS
+Validate .skills files against project standards
+#>
 
 param(
-    [string]$RepoRoot = (Split-Path $PSScriptRoot -Parent)
+    [Parameter(Mandatory = $true)]
+    [string]$Path
 )
 
-$SkillsDir = Join-Path $RepoRoot "skills"
-$PluginJson = Join-Path $RepoRoot ".claude-plugin/plugin.json"
+# Color settings
+$ColorSuccess = "Green"
+$ColorError   = "Red"
+$ColorWarning = "Yellow"
+$ColorInfo    = "Cyan"
 
-$ErrorCount = 0
+# Required YAML fields
+$RequiredYamlFields = @("name", "description", "category", "tags", "version", "author", "created_at")
 
-Write-Host ""
-Write-Host "==============================" -ForegroundColor Cyan
-Write-Host "  .NET Skills 結構驗證" -ForegroundColor Cyan
-Write-Host "==============================" -ForegroundColor Cyan
-Write-Host ""
+# Required content sections (Chinese keywords to match)
+$RequiredSections = @("解決痛點", "Before", "After")
 
-# 讀取 plugin.json
-$plugin = Get-Content $PluginJson | ConvertFrom-Json
-$registeredSkills = $plugin.skills | ForEach-Object { Split-Path $_ -Leaf }
+# File naming pattern (kebab-case)
+$NamingPattern = "^[a-z0-9]+(-[a-z0-9]+)*\.md$"
 
-# 驗證每個 Skill 資料夾都有 SKILL.md
-Write-Host "[1/3] 驗證 SKILL.md 存在性..." -ForegroundColor Yellow
-$skillDirs = Get-ChildItem -Path $SkillsDir -Directory
-foreach ($dir in $skillDirs) {
-    $skillMd = Join-Path $dir.FullName "SKILL.md"
-    if (-not (Test-Path $skillMd)) {
-        Write-Host "  ❌ 缺少 SKILL.md：$($dir.Name)" -ForegroundColor Red
-        $ErrorCount++
-    }
-    else {
-        Write-Host "  ✅ $($dir.Name)" -ForegroundColor Green
-    }
-}
-
-# 驗證 SKILL.md 包含 YAML frontmatter
-Write-Host ""
-Write-Host "[2/3] 驗證 YAML frontmatter..." -ForegroundColor Yellow
-foreach ($dir in $skillDirs) {
-    $skillMd = Join-Path $dir.FullName "SKILL.md"
-    if (Test-Path $skillMd) {
-        $content = Get-Content $skillMd -Raw
-        if (-not $content.StartsWith("---")) {
-            Write-Host "  ❌ 缺少 YAML frontmatter：$($dir.Name)" -ForegroundColor Red
-            $ErrorCount++
-        }
-        elseif (-not ($content -match "name:") -or -not ($content -match "description:")) {
-            Write-Host "  ❌ frontmatter 缺少 name 或 description：$($dir.Name)" -ForegroundColor Red
-            $ErrorCount++
-        }
-        else {
-            Write-Host "  ✅ $($dir.Name)" -ForegroundColor Green
-        }
+function Write-Result {
+    param(
+        [string]$Message,
+        [string]$Level = "Info"
+    )
+    switch ($Level) {
+        "Success" { Write-Host "[OK] $Message" -ForegroundColor $ColorSuccess }
+        "Error"   { Write-Host "[ERR] $Message" -ForegroundColor $ColorError }
+        "Warning" { Write-Host "[WARN] $Message" -ForegroundColor $ColorWarning }
+        "Info"    { Write-Host "[INFO] $Message" -ForegroundColor $ColorInfo }
     }
 }
 
-# 驗證所有 Skills 都在 plugin.json 中登記
-Write-Host ""
-Write-Host "[3/3] 驗證 plugin.json 登記..." -ForegroundColor Yellow
-foreach ($dir in $skillDirs) {
-    if ($registeredSkills -contains $dir.Name) {
-        Write-Host "  ✅ $($dir.Name)" -ForegroundColor Green
+function Test-SkillFile {
+    param([string]$FilePath)
+
+    Write-Host "`n----------------------------------------" -ForegroundColor $ColorInfo
+    Write-Result "Validating: $FilePath" "Info"
+    Write-Host "----------------------------------------" -ForegroundColor $ColorInfo
+
+    $HasError = $false
+
+    # 1. Check file exists
+    if (-not (Test-Path $FilePath)) {
+        Write-Result "File not found!" "Error"
+        return $true
     }
-    else {
-        Write-Host "  ❌ 未在 plugin.json 登記：$($dir.Name)" -ForegroundColor Red
-        $ErrorCount++
+
+    # 2. Check file naming
+    $FileName = Split-Path $FilePath -Leaf
+    if ($FileName -notmatch $NamingPattern) {
+        Write-Result "Invalid naming (use kebab-case): $FileName" "Error"
+        $HasError = $true
+    } else {
+        Write-Result "File naming OK" "Success"
     }
+
+    # 3. Read file content
+    $Content = Get-Content $FilePath -Raw -Encoding UTF8
+
+    # 4. Check YAML Front Matter
+    if ($Content -match "^---[\r\n]+([\s\S]*?)[\r\n]+---") {
+        Write-Result "YAML Front Matter found" "Success"
+        $YamlContent = $Matches[1]
+
+        foreach ($field in $RequiredYamlFields) {
+            if ($YamlContent -match "^$field\s*:") {
+                Write-Result "  [OK] Field exists: $field" "Success"
+            } else {
+                Write-Result "  [ERR] Missing field: $field" "Error"
+                $HasError = $true
+            }
+        }
+    } else {
+        Write-Result "Missing YAML Front Matter (---)" "Error"
+        $HasError = $true
+    }
+
+    # 5. Check required sections
+    foreach ($section in $RequiredSections) {
+        if ($Content -match $section) {
+            Write-Result "  [OK] Section found: $section" "Success"
+        } else {
+            Write-Result "  [ERR] Missing section: $section" "Error"
+            $HasError = $true
+        }
+    }
+
+    # 6. Check code blocks
+    if ($Content -match "```csharp") {
+        Write-Result "  [OK] C# code block found" "Success"
+    } else {
+        Write-Result "  [WARN] No C# code block" "Warning"
+    }
+
+    return $HasError
 }
 
-# 結果
-Write-Host ""
-Write-Host "==============================" -ForegroundColor Cyan
-if ($ErrorCount -eq 0) {
-    Write-Host "  ✅ 驗證通過（0 個錯誤）" -ForegroundColor Green
+# ========== Main Logic ==========
+$HasGlobalError = $false
+
+if (Test-Path $Path -PathType Container) {
+    Write-Result "Scanning directory: $Path" "Info"
+    $Files = Get-ChildItem -Path $Path -Filter *.md -Recurse
+    
+    if ($Files.Count -eq 0) {
+        Write-Result "No .md files found" "Warning"
+    }
+
+    foreach ($File in $Files) {
+        $ErrorFound = Test-SkillFile -FilePath $File.FullName
+        if ($ErrorFound) { $HasGlobalError = $true }
+    }
+}
+elseif (Test-Path $Path -PathType Leaf) {
+    $ErrorFound = Test-SkillFile -FilePath $Path
+    if ($ErrorFound) { $HasGlobalError = $true }
 }
 else {
-    Write-Host "  ❌ 驗證失敗（$ErrorCount 個錯誤）" -ForegroundColor Red
+    Write-Result "Invalid path: $Path" "Error"
     exit 1
 }
-Write-Host "==============================" -ForegroundColor Cyan
-Write-Host ""
+
+# Final result
+Write-Host "`n========================================" -ForegroundColor $ColorInfo
+if ($HasGlobalError) {
+    Write-Result "VALIDATION FAILED: Please fix errors before commit" "Error"
+    exit 1
+} else {
+    Write-Result "VALIDATION PASSED: All checks OK!" "Success"
+    exit 0
+}

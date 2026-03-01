@@ -25,3 +25,4 @@ Thumbs.db
 # IDE
 .idea/
 *.swp
+tools/validation-log.txt
