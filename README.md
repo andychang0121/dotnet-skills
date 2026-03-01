@@ -13,18 +13,27 @@
 
 ### 一鍵安裝（推薦）
 
-在你的**新專案目錄**執行以下指令，互動式選單會引導你完成設定：
+這套技能包提供一個互動式 PowerShell 安裝程式。在你的**新專案目錄**中，選擇以下其中一種方式執行：
+
+**⭐ 方式一：從 GitHub 線上安裝（當你的 Repo 已設為公開時使用）**
 
 ```powershell
 PowerShell -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/andychang0121/dotnet-skills/main/scripts/install.ps1 | iex"
 ```
 
-安裝程式會詢問：
+**⭐ 方式二：本機直接安裝（如果你已 Clone 此 Repo 到本機，可直接執行腳本）**
+
+```powershell
+# 請將下方的 D:\Project\dotnet-skills 替換為你的實際下載存放路徑
+PowerShell -ExecutionPolicy Bypass -File D:\Project\dotnet-skills\scripts\install.ps1
+```
+
+執行後安裝程式會詢問：
 
 1. **專案資料夾路徑**（Enter 為目前目錄）
 2. **AI 工具選擇**（VS Code / Cursor / Antigravity）
 
-並自動完成對應的 Skills 安裝與設定檔建立。
+並會自動完成對應的 Skills 下載/複製與專屬設定檔建立。
 
 ---
 
