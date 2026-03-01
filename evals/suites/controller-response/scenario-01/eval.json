@@ -1,0 +1,12 @@
+{
+  "skill": "aspnetcore-controller-best-practices",
+  "query": "use dotnet skill, 建立一個 ProductController 包含 GET 單筆商品（by ID）的端點",
+  "files": ["Controllers/ProductController.cs"],
+  "expected_behavior": [
+    "加入 [ApiController] attribute",
+    "加入 [ProducesResponseType] 標注所有回應狀態碼（200、404）",
+    "使用 IActionResult 回傳型別",
+    "Accept CancellationToken 參數",
+    "Route 使用 {id:guid} 型別限制"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "skill": "efcore-async-patterns",
+  "query": "use dotnet skill, 幫我在 ProductRepository 實作 GetByIdAsync 方法，查詢商品資料並回傳",
+  "files": ["Repositories/ProductRepository.cs"],
+  "expected_behavior": [
+    "使用 FirstOrDefaultAsync 而非 FirstOrDefault",
+    "加入 AsNoTracking()（唯讀查詢）",
+    "傳入 CancellationToken 參數",
+    "不使用 .Result 或 .Wait()"
+  ]
+}

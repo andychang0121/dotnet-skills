@@ -1,0 +1,11 @@
+{
+  "skill": "dotnet-di-patterns",
+  "query": "use dotnet skill, 建立一個 ReportService 需要每次 HTTP 請求都取得新的實例，在 Program.cs 中注冊",
+  "files": ["Services/ReportService.cs", "Extensions/ServiceExtensions.cs"],
+  "expected_behavior": [
+    "使用 AddScoped 而非 AddSingleton 或 AddTransient",
+    "注冊 IReportService 介面而非具體類別",
+    "使用 Extension Method 組織服務注冊",
+    "不直接在 Program.cs 撰寫注冊邏輯"
+  ]
+}

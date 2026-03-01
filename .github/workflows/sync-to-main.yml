@@ -1,0 +1,33 @@
+name: 同步至主分支
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: '確認同步（輸入 yes 確認）'
+        required: true
+        default: 'no'
+
+jobs:
+  sync:
+    name: 同步 dev 至 main
+    runs-on: ubuntu-latest
+    if: github.event.inputs.confirm == 'yes'
+
+    steps:
+      - name: 取出程式碼
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 設定 Git 使用者
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+      - name: 合併 dev 至 main
+        run: |
+          git checkout main
+          git merge dev --no-ff -m "chore: 從 dev 同步至 main"
+          git push origin main

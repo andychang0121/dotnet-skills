@@ -1,0 +1,35 @@
+name: 驗證 Skills 結構
+
+on:
+  pull_request:
+    branches: [dev, main]
+    paths:
+      - 'skills/**'
+      - '.claude-plugin/**'
+
+jobs:
+  validate:
+    name: 驗證 Skill 結構完整性
+    runs-on: windows-latest
+
+    steps:
+      - name: 取出程式碼
+        uses: actions/checkout@v4
+
+      - name: 執行 validate-skills.ps1
+        shell: pwsh
+        run: .\scripts\validate-skills.ps1
+
+      - name: 確認所有 Skills 有 SKILL.md
+        shell: pwsh
+        run: |
+          $missing = @()
+          Get-ChildItem -Path skills -Directory | ForEach-Object {
+            $skillMd = Join-Path $_.FullName "SKILL.md"
+            if (-not (Test-Path $skillMd)) { $missing += $_.Name }
+          }
+          if ($missing.Count -gt 0) {
+            Write-Error "以下 Skills 缺少 SKILL.md：$($missing -join ', ')"
+            exit 1
+          }
+          Write-Host "所有 Skills 驗證通過"

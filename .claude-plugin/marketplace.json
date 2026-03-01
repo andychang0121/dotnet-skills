@@ -1,0 +1,9 @@
+{
+  "id": "dotnet-skills",
+  "name": ".NET Skills",
+  "description": "ASP.NET Core MVC REST API best practices for .NET 8/10 — 13 skills covering Clean Architecture, DDD, async patterns, DI, EF Core, and more.",
+  "publisher": "Andy Chang",
+  "repository": "https://github.com/andychang0121/dotnet-skills",
+  "version": "0.1.0",
+  "tags": ["dotnet", "csharp", "aspnetcore", "efcore", "ddd", "clean-architecture", "rest-api"]
+}

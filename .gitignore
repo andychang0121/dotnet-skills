@@ -1,0 +1,27 @@
+# .NET 建置輸出
+bin/
+obj/
+*.user
+*.suo
+.vs/
+
+# Node.js（evals 工具）
+node_modules/
+npm-debug.log
+
+# 環境設定
+.env
+.env.local
+
+# 暫存檔
+*.tmp
+*.temp
+tmp/
+
+# OS 系統檔案
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+*.swp

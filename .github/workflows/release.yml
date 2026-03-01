@@ -1,0 +1,36 @@
+name: 建立 Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  release:
+    name: 建立 GitHub Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 取出程式碼
+        uses: actions/checkout@v4
+
+      - name: 取得版本號
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: 建立 Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: "v${{ steps.version.outputs.VERSION }}"
+          body: |
+            ## .NET Skills v${{ steps.version.outputs.VERSION }}
+
+            詳見 [CHANGELOG.md](CHANGELOG.md) 瞭解本版本變更。
+
+            ### 快速安裝
+
+            ```powershell
+            PowerShell -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/andychang0121/dotnet-skills/main/scripts/install.ps1 | iex"
+            ```
+          draft: false
+          prerelease: false

@@ -1,0 +1,10 @@
+{
+  "skill": "csharp-primary-constructor",
+  "query": "use dotnet skill, 建立一個 UserService 需要注入 IUserRepository 和 ILogger<UserService>",
+  "files": ["Services/UserService.cs"],
+  "expected_behavior": [
+    "使用 Primary Constructor 語法（參數在類別宣告上）",
+    "不宣告 private readonly 欄位",
+    "直接在方法中使用注入的參數"
+  ]
+}
