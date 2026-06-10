@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](CHANGELOG.md)
 
-專為 .NET 8/10 RESTful API（MVC Controller）開發設計的 AI 技能包。讓 VS Code Copilot、Cursor、Antigravity 等 AI 工具遵循現代 .NET 最佳實踐與 DDD 架構原則，自動產生符合規範的程式碼。
+專為 .NET 8/10 RESTful API（MVC Controller 與 Minimal API）開發設計的 AI 技能包。讓 VS Code Copilot、Cursor、Antigravity 等 AI 工具遵循現代 .NET 最佳實踐與 DDD 架構原則，自動產生符合規範的程式碼。
 
 > **所有技能文件均以繁體中文撰寫。**
 
@@ -86,12 +86,12 @@ cp -r /tmp/dotnet-skills/skills/* .agents/skills/
 
 路由：
 - 架構設計：clean-architecture-layers, dotnet-ddd-patterns
-- 啟動設定：aspnetcore-program-cs-extensions, dotnet-di-patterns, dotnet-options-pattern
-- Controller 開發：aspnetcore-controller-best-practices, aspnetcore-response-patterns
+- 啟動設定：program-cs-extensions, dotnet-di-patterns, dotnet-options-pattern
+- Controller 與 Minimal API 開發：controller-apis, minimal-apis, response-patterns
 - 資料存取：efcore-async-patterns
-- 錯誤處理：csharp-result-pattern, aspnetcore-middleware
+- 錯誤處理：csharp-result-pattern, middleware
 - 背景服務：dotnet-background-services
-- 程式碼規範：csharp-coding-standards, csharp-primary-constructor
+- 程式碼規範與日誌：csharp-coding-standards, csharp-primary-constructor, structured-logging
 ```
 
 ---
@@ -117,11 +117,8 @@ use dotnet skill, 建立 Product Entity 符合 DDD 原則
 <!-- SKILLS_LIST_START -->
 | Skill | 說明 |
 |-------|------|
-| `aspnetcore-controller-best-practices` | ASP.NET Core MVC Controller best practices. Use [ApiController] and [ProducesResponseType] attributes. Follow REST route naming conventions. Return IActionResult or ActionResult<T>. Keep controllers thin by delegating business logic to services. |
-| `aspnetcore-middleware` | Create custom ASP.NET Core middleware using IMiddleware interface, convention-based approach, or lambda. Implement global exception handling with IExceptionHandler (.NET 8+) and RFC 9457 ProblemDetails format. Understand middleware pipeline ordering. |
-| `aspnetcore-program-cs-extensions` | Organize ASP.NET Core Program.cs using IServiceCollection and IApplicationBuilder extension methods. Avoid bloated Program.cs by grouping service registrations into layered AddXxx() and UseXxx() methods. Follow middleware pipeline ordering. |
-| `aspnetcore-response-patterns` | Correct usage of ASP.NET Core IActionResult response methods. Use Ok(), BadRequest(), NotFound(), NoContent(), CreatedAtAction() for appropriate HTTP status codes. Standardize error responses using ProblemDetails (RFC 9457). |
 | `clean-architecture-layers` | Clean Architecture layering for ASP.NET Core APIs. Domain -> Application -> Infrastructure -> Api dependency direction. Controllers must not directly access DbContext. Services injected via interfaces. DTOs separate from Entities. |
+| `controller-apis` | ASP.NET Core MVC Controller best practices. Use [ApiController] and [ProducesResponseType] attributes. Follow REST route naming conventions. Return IActionResult or ActionResult<T>. Keep controllers thin by delegating business logic to services. |
 | `csharp-coding-standards` | C# coding standards for .NET 8/10. Use explicit types instead of var. Use expression-body members (=>) for simple methods and properties. Apply Traditional Chinese XML summary to all class/struct/record fields and methods with usage examples. Follow C# naming conventions. |
 | `csharp-primary-constructor` | Use C# 12 Primary Constructor for dependency injection in ASP.NET Core. Eliminates boilerplate private readonly fields. Use for DI injection only. Prefer traditional constructor when initialization logic is needed. |
 | `csharp-result-pattern` | Use Result<T> pattern instead of throwing exceptions for business logic errors in ASP.NET Core. Use exceptions only for truly unexpected system errors. Provides Success/Failure factory methods and clean Controller unwrapping. |
@@ -130,6 +127,11 @@ use dotnet skill, 建立 Product Entity 符合 DDD 原則
 | `dotnet-di-patterns` | ASP.NET Core dependency injection best practices. Understand Singleton/Scoped/Transient lifetimes. Avoid Captive Dependency (injecting Scoped into Singleton). Use .NET 8 Keyed Services. Always depend on interfaces, not implementations. |
 | `dotnet-options-pattern` | Configure ASP.NET Core settings using IOptions<T>, IOptionsMonitor<T>, and IOptionsSnapshot<T>. Know when to use each variant. Bind configuration sections to strongly-typed classes. Avoid magic strings in configuration access. |
 | `efcore-async-patterns` | EF Core async/await best practices. Always use SaveChangesAsync, FirstOrDefaultAsync, ToListAsync. Never use .Result or .Wait(). Apply AsNoTracking() for read-only queries. Avoid N+1 queries with proper Include. Always pass CancellationToken. |
+| `middleware` | Create custom ASP.NET Core middleware using IMiddleware interface, convention-based approach, or lambda. Implement global exception handling with IExceptionHandler (.NET 8+) and RFC 9457 ProblemDetails format. Understand middleware pipeline ordering. |
+| `minimal-apis` | Best practices for ASP.NET Core Minimal APIs. Include Route Groups, Dependency Injection, TypedResults, and validation. |
+| `program-cs-extensions` | Organize ASP.NET Core Program.cs using IServiceCollection and IApplicationBuilder extension methods. Avoid bloated Program.cs by grouping service registrations into layered AddXxx() and UseXxx() methods. Follow middleware pipeline ordering. |
+| `response-patterns` | Correct usage of ASP.NET Core IActionResult response methods. Use Ok(), BadRequest(), NotFound(), NoContent(), CreatedAtAction() for appropriate HTTP status codes. Standardize error responses using ProblemDetails (RFC 9457). |
+| `structured-logging` | Structured logging best practices for .NET. Use message templates with named properties instead of string interpolation, apply high-performance [LoggerMessage] source generator, and enrich logs with BeginScope. |
 <!-- SKILLS_LIST_END -->
 
 ---
@@ -351,4 +353,9 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
 MIT License — Copyright (c) 2026 Andy Chang
 
 詳見 [LICENSE](LICENSE)。
+
+
+
+
+
 

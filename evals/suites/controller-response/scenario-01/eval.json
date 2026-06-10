@@ -1,5 +1,5 @@
 {
-  "skill": "aspnetcore-controller-best-practices",
+  "skill": "controller-apis",
   "query": "use dotnet skill, 建立一個 ProductController 包含 GET 單筆商品（by ID）的端點",
   "files": ["Controllers/ProductController.cs"],
   "expected_behavior": [

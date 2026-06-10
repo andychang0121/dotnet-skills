@@ -1,7 +1,7 @@
 {
   "name": "dotnet-skills",
   "version": "0.1.0",
-  "description": "ASP.NET Core MVC REST API best practices for .NET 8/10 — Clean Architecture, DDD, async patterns, DI, EF Core, Result pattern, Middleware, and more. All documentation in Traditional Chinese.",
+  "description": "ASP.NET Core MVC REST API & Minimal API best practices for .NET 8/10 — Clean Architecture, DDD, async patterns, DI, EF Core, Result pattern, Middleware, and more. All documentation in Traditional Chinese.",
   "author": {
     "name": "Andy Chang",
     "url": "https://github.com/andychang0121"
@@ -10,17 +10,19 @@
   "skills": [
     "./skills/clean-architecture-layers",
     "./skills/csharp-primary-constructor",
-    "./skills/aspnetcore-controller-best-practices",
-    "./skills/aspnetcore-program-cs-extensions",
-    "./skills/aspnetcore-response-patterns",
+    "./skills/controller-apis",
+    "./skills/program-cs-extensions",
+    "./skills/response-patterns",
     "./skills/efcore-async-patterns",
     "./skills/dotnet-di-patterns",
     "./skills/csharp-result-pattern",
     "./skills/dotnet-options-pattern",
     "./skills/dotnet-background-services",
-    "./skills/aspnetcore-middleware",
+    "./skills/middleware",
     "./skills/csharp-coding-standards",
-    "./skills/dotnet-ddd-patterns"
+    "./skills/dotnet-ddd-patterns",
+    "./skills/minimal-apis",
+    "./skills/structured-logging"
   ],
   "agents": [
     "./agents/dotnet-api-specialist.md"
