@@ -3,8 +3,8 @@
 # iwr https://raw.githubusercontent.com/andychang0121/dotnet-skills/main/scripts/install.ps1 | iex
 
 param(
-    [string]$ProjectPath = "",  # 專案路徑（空白則互動詢問）
-    [int]$ToolChoice = 0,       # AI 工具選擇（0 則互動詢問）
+    [string]$ProjectPath = "",  # 專案路徑（空白則自動偵測或互動詢問）
+    [int]$ToolChoice = 0,       # AI 工具選擇（0 則互動詢問，預設 3）
     [switch]$Force              # 是否強制安裝（跳過確認提示）
 )
 
@@ -18,7 +18,7 @@ $RepoUrl = "https://github.com/andychang0121/dotnet-skills.git"
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 $OutputEncoding = [System.Text.Encoding]::UTF8
 
-# 標題與歡迎訊息
+# ---------- 標題與歡迎訊息 ----------
 Write-Host ""
 Write-Host "==============================================" -ForegroundColor Cyan
 Write-Host "       .NET Skills 安裝程式 v0.2.0" -ForegroundColor Cyan
@@ -28,7 +28,7 @@ Write-Host "歡迎使用 .NET Skills 安裝程式！" -ForegroundColor White
 Write-Host "本程式將引導您下載並安裝專為 .NET REST API 設計的 AI 技能包與設定檔。" -ForegroundColor White
 Write-Host ""
 
-# 確認是否繼續安裝
+# ---------- 確認是否繼續安裝 ----------
 if (-not $Force) {
     Write-Host "是否確定要繼續安裝？[Y/N]" -ForegroundColor Yellow
     $Confirm = Read-Host "> "
@@ -46,11 +46,30 @@ Write-Host "開始進行安裝設定..." -ForegroundColor Cyan
 Write-Host "----------------------------------------------" -ForegroundColor Cyan
 Write-Host ""
 
-# 詢問專案路徑
-if ($ProjectPath -eq "") {
-    Write-Host "請輸入您的專案資料夾路徑（直接按 Enter 為目前目錄 '$((Get-Location).Path)'）:" -ForegroundColor Yellow
-    $inputPath = Read-Host "> "
-    $ProjectPath = if (([string]::IsNullOrWhiteSpace($inputPath))) { (Get-Location).Path } else { $inputPath }
+# ---------- 專案路徑偵測與取得 ----------
+function Get-NearestProjectPath {
+    $current = Get-Location
+    while ($null -ne $current) {
+        if (Get-ChildItem -Path $current -Filter *.sln -File -ErrorAction SilentlyContinue) {
+            return $current.Path
+        }
+        $parent = Split-Path $current -Parent
+        if ($parent -eq $current.Path) { break }
+        $current = Get-Item $parent
+    }
+    return $null
+}
+
+if ([string]::IsNullOrWhiteSpace($ProjectPath)) {
+    $detected = Get-NearestProjectPath
+    if ($detected) {
+        Write-Host "偵測到 Solution 所在目錄：$detected" -ForegroundColor Green
+        $ProjectPath = $detected
+    } else {
+        Write-Host "請輸入您的專案資料夾路徑（直接按 Enter 為目前目錄 '$((Get-Location).Path)'）:" -ForegroundColor Yellow
+        $inputPath = Read-Host "> "
+        $ProjectPath = if ([string]::IsNullOrWhiteSpace($inputPath)) { (Get-Location).Path } else { $inputPath }
+    }
 }
 
 # 驗證並建立路徑
@@ -72,21 +91,28 @@ Write-Host ""
 Write-Host "  最終安裝路徑：$ProjectPath" -ForegroundColor Green
 Write-Host ""
 
-# 詢問 AI 工具
+# ---------- 環境檢查 ----------
+Write-Host "執行環境檢查..." -ForegroundColor Cyan
+& "${PSScriptRoot}\check-env.ps1"
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "⚠️ 環境檢查失敗，請先解決上述問題再執行安裝。" -ForegroundColor Red
+    exit 1
+}
+
+# ---------- AI 工具選擇與自動偵測 ----------
 if ($ToolChoice -eq 0) {
-    Write-Host "請選擇您的 AI 開發工具：" -ForegroundColor Yellow
+    Write-Host "請選擇您的 AI 開發工具（預設 3 為 Antigravity）:" -ForegroundColor Yellow
     Write-Host "  1. VS Code / Visual Studio (GitHub Copilot)"
     Write-Host "  2. Cursor"
     Write-Host "  3. Antigravity (Google)"
     Write-Host ""
-
     do {
-        $input = Read-Host "請輸入選項 (1-3)"
+        $input = Read-Host "請輸入選項 (1-3，直接 Enter 為 3)"
+        if ([string]::IsNullOrWhiteSpace($input)) { $ToolChoice = 3; break }
         $ToolChoice = [int]$input
     } while ($ToolChoice -lt 1 -or $ToolChoice -gt 3)
 }
 
-# 根據工具設定目標路徑
 $SkillsTarget = switch ($ToolChoice) {
     1 { Join-Path $ProjectPath ".github/skills" }
     2 { Join-Path $ProjectPath ".cursor/skills" }
@@ -109,10 +135,10 @@ Write-Host ""
 Write-Host "正在安裝 .NET Skills 至 $ToolName..." -ForegroundColor Cyan
 Write-Host ""
 
-# 建立 Skills 目錄
+# ---------- 建立 Skills 目錄 ----------
 New-Item -ItemType Directory -Path $SkillsTarget -Force | Out-Null
 
-# 下載並複製 Skills
+# ---------- 下載並複製 Skills ----------
 $TempDir = Join-Path $env:TEMP "dotnet-skills-$(Get-Random)"
 Write-Host "  正在下載 Skills..." -ForegroundColor Yellow
 git clone --quiet $RepoUrl $TempDir > $null 2>&1
@@ -124,10 +150,10 @@ if ($LASTEXITCODE -ne 0) {
 
 # 複製所有 Skills
 $SourceSkills = Join-Path $TempDir "skills"
-Copy-Item -Path "$SourceSkills\*" -Destination $SkillsTarget -Recurse -Force
+Copy-Item -Path "${SourceSkills}\*" -Destination $SkillsTarget -Recurse -Force
 Write-Host "  ✅ Skills 已安裝至：$SkillsTarget" -ForegroundColor Green
 
-# 建立設定檔（AGENTS.md / copilot-instructions.md / .cursorrules）
+# ---------- 建立或更新設定檔 ----------
 $ConfigDir = Split-Path $ConfigTarget -Parent
 New-Item -ItemType Directory -Path $ConfigDir -Force | Out-Null
 
@@ -156,41 +182,29 @@ $RouterContent = @"
 提示詞前加上 ``use dotnet skill,`` 確保 AI 參考技能包，例如：
 - ``use dotnet skill, 建立一個 ProductController 包含 CRUD 操作``
 - ``use dotnet skill, 建立符合 DDD 的 Order Aggregate``
-
-## 程式碼規範（所有 .NET 任務都必須遵守）
-
-- 所有欄位必須有一列式 ``<summary>`` XML 文件
-- 所有方法必須有繁體中文說明與使用範例
-- 使用明確型別宣告（禁止溺用 ``var``）
-- 簡單方法使用 Expression-body (``=>``)
 "@
 
-# 若設定檔已存在，追加路由設定並指定 UTF8 編碼避免中文亂碼
 if (Test-Path $ConfigTarget) {
     Add-Content -Path $ConfigTarget -Value "`n`n$RouterContent" -Encoding UTF8
     Write-Host "  ✅ 路由設定已追加至：$ConfigTarget" -ForegroundColor Green
-}
-else {
+} else {
     Set-Content -Path $ConfigTarget -Value $RouterContent -Encoding UTF8
     Write-Host "  ✅ 設定檔已建立：$ConfigTarget" -ForegroundColor Green
 }
 
-# 清理暫存
+# ---------- 清理暫存 ----------
 Remove-Item -Path $TempDir -Recurse -Force
 
-# 列出已安裝的 Skills
+# ---------- 列出已安裝的 Skills ----------
 Write-Host ""
 Write-Host "==============================================" -ForegroundColor Cyan
 $installedCount = (Get-ChildItem -Path $SkillsTarget -Directory).Count
 Write-Host "          已安裝的 Skills（共 $installedCount 個）" -ForegroundColor Cyan
 Write-Host "==============================================" -ForegroundColor Cyan
-Get-ChildItem -Path $SkillsTarget -Directory | ForEach-Object {
-    Write-Host "  ✓ $($_.Name)" -ForegroundColor Green
-}
+Get-ChildItem -Path $SkillsTarget -Directory | ForEach-Object { Write-Host "  ✓ $($_.Name)" -ForegroundColor Green }
 
 Write-Host ""
 Write-Host "安裝完成！使用方式：" -ForegroundColor Cyan
 Write-Host "  在提示詞前加上 'use dotnet skill,' 即可觸發對應技能" -ForegroundColor White
 Write-Host "  例如：use dotnet skill, 建立一個 UserController" -ForegroundColor White
 Write-Host ""
-

@@ -380,6 +380,34 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
 | `scripts/generate-index.ps1` | 自動更新 README Skill 清單 |
 
 ---
+## 🛠️ 故障排除 / FAQ
+
+以下列出常見問題與解決方式：
+
+### 1. 安裝腳本執行失敗，顯示「git not found」或類似錯誤
+- 請先安裝 Git，並確保 `git` 指令在系統 `PATH` 中。
+- 在 PowerShell 中執行 `git --version` 以確認。
+
+### 2. 環境檢查失敗（`check‑env.ps1` 返回非零代碼）
+- 確認已安裝 .NET SDK 8.0+，執行 `dotnet --list‑sdks`。
+- 若未安裝，請至 https://dotnet.microsoft.com/download 下載安裝。
+- 確認 C# 12+ 與 .NET 8.0 以上的相容性。
+
+### 3. 指定的專案路徑不存在或無法建立
+- 確認路徑權限，確保當前使用者對目錄有寫入權限。
+- 若使用相對路徑，請先切換至正確的工作目錄或提供完整絕對路徑。
+
+### 4. AI 工具選擇錯誤或未偵測到
+- 重新執行安裝腳本並手動輸入正確的選項 (1‑3)。
+- 若使用 Antigravity，請確認已安裝並可在 PowerShell 中呼叫。
+
+### 5. 安裝完成後 Skills 未顯示或路由設定未加入
+- 檢查 `scripts/install.ps1` 中的 `$SkillsTarget`、`$ConfigTarget` 是否正確指向您的專案目錄。
+- 手動檢查 `.github/skills`、`.cursor/skills`、`.agents/skills` 是否已存在相應 Skill 資料夾。
+- 若路由檔案已存在，請確認 `AGENTS.md`（或對應檔案）中已加入路由段落。
+
+如仍有問題，請於 Issues 區提出，或參考完整文件 https://github.com/andychang0121/dotnet-skills。
+---
 
 ## 🤝 貢獻
 
@@ -397,6 +425,7 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
 MIT License — Copyright (c) 2026 Andy Chang
 
 詳見 [LICENSE](LICENSE)。
+
 
 
 
