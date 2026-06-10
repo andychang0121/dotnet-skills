@@ -9,7 +9,31 @@
 
 ---
 
-## 📦 安裝
+## ⚡ 快速開始 (Quick Start)
+
+只需三步，即可在你的 .NET 專案中啟用或移除這套技能包：
+
+### 1. 一鍵安裝 (Install)
+在您的 **.NET 專案根目錄**下開啟 PowerShell 視窗，並貼上執行以下指令：
+```powershell
+PowerShell -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/andychang0121/dotnet-skills/master/scripts/install.ps1 | iex"
+```
+*執行時輸入 `Y` 確認，並選擇您所使用的開發工具（1. VS Code/VS, 2. Cursor, 3. Antigravity），即安裝完成！*
+
+### 2. 開發使用 (Usage)
+在與 AI 對話時，在提示詞前方加上 `use dotnet skill,`，AI 就會自動讀取並遵循我們的 20 個技能規範。例如：
+> `use dotnet skill, 幫我寫一個 ProductController 並整合 structured-logging。`
+
+### 3. 一鍵解除安裝 (Uninstall)
+若想完全清除技能包檔案並恢復專案原狀，在**專案根目錄**下執行：
+```powershell
+PowerShell -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/andychang0121/dotnet-skills/master/scripts/uninstall.ps1 | iex"
+```
+*此指令會自動偵測已安裝的 AI 工具，並將其產生的技能資料夾與路由設定徹底清除。*
+
+---
+
+## 📦 安裝詳細說明
 
 ### 一鍵安裝（推薦）
 
@@ -364,6 +388,7 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
 MIT License — Copyright (c) 2026 Andy Chang
 
 詳見 [LICENSE](LICENSE)。
+
 
 
 
