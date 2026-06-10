@@ -21,7 +21,7 @@ $OutputEncoding = [System.Text.Encoding]::UTF8
 # 標題與歡迎訊息
 Write-Host ""
 Write-Host "==============================================" -ForegroundColor Cyan
-Write-Host "       .NET Skills 安裝程式 v0.1.0" -ForegroundColor Cyan
+Write-Host "       .NET Skills 安裝程式 v0.2.0" -ForegroundColor Cyan
 Write-Host "==============================================" -ForegroundColor Cyan
 Write-Host ""
 Write-Host "歡迎使用 .NET Skills 安裝程式！" -ForegroundColor White

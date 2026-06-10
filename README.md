@@ -1,7 +1,7 @@
 ﻿# .NET Skills — .NET 8/10 RESTful API 開發技能包
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.2.0-blue.svg)](CHANGELOG.md)
 
 專為 .NET 8/10 RESTful API（MVC Controller 與 Minimal API）開發設計的 AI 技能包。讓 VS Code Copilot、Cursor、Antigravity 等 AI 工具遵循現代 .NET 最佳實踐與 DDD 架構原則，自動產生符合規範的程式碼。
 
@@ -397,6 +397,7 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
 MIT License — Copyright (c) 2026 Andy Chang
 
 詳見 [LICENSE](LICENSE)。
+
 
 
 

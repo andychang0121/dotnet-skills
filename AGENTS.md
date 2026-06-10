@@ -1,4 +1,4 @@
-# .NET Skills 開發指南
+﻿# .NET Skills 開發指南
 
 本文件提供給貢獻者與 AI Agent 使用，說明如何維護與擴充本 Skill 庫。
 
@@ -30,6 +30,7 @@
 ---
 name: skill-name-in-kebab-case
 description: English description for AI keyword matching. Be specific about when to use this skill.
+description_zh: 繁體中文簡要說明，用於自動同步更新至 README.md 清單。
 invocable: false
 ---
 ```
@@ -52,6 +53,7 @@ invocable: false
 ### 語言規範
 
 - **`description` 欄位**：英文（供 AI 關鍵字匹配）
+- **`description_zh` 欄位**：繁體中文（供 README 技能清單自動同步）
 - **其餘所有內容**：繁體中文
 - **程式碼範例**：程式碼本身不限語言，但**程式碼內的註解必須繁體中文**
 

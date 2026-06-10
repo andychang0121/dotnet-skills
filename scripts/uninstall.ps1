@@ -18,7 +18,7 @@ $OutputEncoding = [System.Text.Encoding]::UTF8
 # 標題與歡迎訊息
 Write-Host ""
 Write-Host "==============================================" -ForegroundColor Red
-Write-Host "      .NET Skills 解除安裝程式 v0.1.0" -ForegroundColor Red
+Write-Host "      .NET Skills 解除安裝程式 v0.2.0" -ForegroundColor Red
 Write-Host "==============================================" -ForegroundColor Red
 Write-Host ""
 Write-Host "本程式將引導您從專案中移除所有的 .NET Skills 技能包與 AI 路由設定。" -ForegroundColor White
