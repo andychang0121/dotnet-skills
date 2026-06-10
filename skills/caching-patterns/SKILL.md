@@ -1,5 +1,5 @@
 ﻿---
-name: dotnet-caching-patterns
+name: caching-patterns
 description: Implementing local and distributed caching strategies, using HybridCache (.NET 9), Cache-Aside, and race condition prevention.
 description_zh: 實作記憶體快取、分散式快取與防擊穿鎖定的快取策略指南。
 invocable: false

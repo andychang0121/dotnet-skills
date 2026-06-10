@@ -138,18 +138,18 @@ $RouterContent = @"
 
 ## 路由規則
 
-- 架構設計：clean-architecture-layers, dotnet-ddd-patterns
-- 啟動設定：program-cs-extensions, dotnet-di-patterns, dotnet-options-pattern
+- 架構設計：clean-architecture-layers, ddd-patterns
+- 啟動設定：program-cs-extensions, dependency-injection, options-pattern
 - Controller 與 Minimal API 開發：controller-apis, minimal-apis, response-patterns
 - 資料存取與效能：efcore-async-patterns, efcore-performance
 - 錯誤處理：csharp-result-pattern, middleware
-- 背景服務：dotnet-background-services
-- 快取策略：dotnet-caching-patterns
+- 背景服務：background-services
+- 快取策略：caching-patterns
 - 驗證與 DTO 設計：fluent-validation-patterns
 - API 文件與規格：openapi-best-practices
-- 測試撰寫：dotnet-testing-practices
+- 測試撰寫：testing-practices
 - 程式碼規範與日誌：csharp-coding-standards, csharp-primary-constructor, structured-logging
-- DDD 建模：dotnet-ddd-patterns, clean-architecture-layers
+- DDD 建模：ddd-patterns, clean-architecture-layers
 
 ## 使用方式
 

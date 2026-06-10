@@ -1,5 +1,5 @@
 ﻿---
-name: dotnet-options-pattern
+name: options-pattern
 description: Configure ASP.NET Core settings using IOptions<T>, IOptionsMonitor<T>, and IOptionsSnapshot<T>. Know when to use each variant. Bind configuration sections to strongly-typed classes. Avoid magic strings in configuration access.
 description_zh: 使用 Options 模式進行強型別設定載入與監控的配置指南。
 invocable: false

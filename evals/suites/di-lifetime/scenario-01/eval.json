@@ -1,5 +1,5 @@
 {
-  "skill": "dotnet-di-patterns",
+  "skill": "dependency-injection",
   "query": "use dotnet skill, 建立一個 ReportService 需要每次 HTTP 請求都取得新的實例，在 Program.cs 中注冊",
   "files": ["Services/ReportService.cs", "Extensions/ServiceExtensions.cs"],
   "expected_behavior": [
