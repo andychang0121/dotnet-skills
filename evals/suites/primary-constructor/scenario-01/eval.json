@@ -1,5 +1,5 @@
 {
-  "skill": "csharp-primary-constructor",
+  "skill": "primary-constructor",
   "query": "use dotnet skill, 建立一個 UserService 需要注入 IUserRepository 和 ILogger<UserService>",
   "files": ["Services/UserService.cs"],
   "expected_behavior": [

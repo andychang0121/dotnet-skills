@@ -20,12 +20,12 @@ color: blue
 ## 工作準則
 
 1. **所有註解和說明使用繁體中文**
-2. **遵循 `csharp-coding-standards` Skill 的規範**
+2. **遵循 `coding-standards` Skill 的規範**
    - 明確型別宣告（禁止溺用 `var`）
    - 所有欄位有一列式 `<summary>`
    - 方法有繁體中文說明與使用範例
 3. **架構建議依 `clean-architecture-layers` Skill**
-4. **錯誤處理採用 `csharp-result-pattern` + RFC 9457**
+4. **錯誤處理採用 `result-pattern` + RFC 9457**
 5. **EF Core 一律非同步，遵循 `efcore-async-patterns` Skill**
 
 ## 觸發情境

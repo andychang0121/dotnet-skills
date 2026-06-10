@@ -123,13 +123,13 @@ cp -r /tmp/dotnet-skills/skills/* .agents/skills/
 - 啟動設定：program-cs-extensions, dependency-injection, options-pattern
 - Controller 與 Minimal API 開發：controller-apis, minimal-apis, response-patterns
 - 資料存取與效能：efcore-async-patterns, efcore-performance
-- 錯誤處理：csharp-result-pattern, middleware
+- 錯誤處理：result-pattern, middleware
 - 背景服務：background-services
 - 快取策略：caching-patterns
 - 驗證與 DTO 設計：fluent-validation-patterns
 - API 文件與規格：openapi-best-practices
 - 測試撰寫：testing-practices
-- 程式碼規範與日誌：csharp-coding-standards, csharp-primary-constructor, structured-logging
+- 程式碼規範與日誌：coding-standards, primary-constructor, structured-logging
 - DDD 建模：ddd-patterns, clean-architecture-layers
 ```
 
@@ -159,10 +159,8 @@ use dotnet skill, 建立 Product Entity 符合 DDD 原則
 | `background-services` | 在 ASP.NET Core 中實作 BackgroundService 背景服務與生命週期管理的最佳實踐。 |
 | `caching-patterns` | 實作記憶體快取、分散式快取與防擊穿鎖定的快取策略指南。 |
 | `clean-architecture-layers` | ASP.NET Core API 的乾淨架構分層規範，定義 Domain -> Application -> Infrastructure -> Api 的依賴方向。 |
+| `coding-standards` | 針對 .NET 8/10 的 C# 程式碼編寫與型別宣告規範。 |
 | `controller-apis` | ASP.NET Core MVC Controller 開發最佳實踐，包含 RESTful 路由命名與回應型別標記。 |
-| `csharp-coding-standards` | 針對 .NET 8/10 的 C# 程式碼編寫與型別宣告規範。 |
-| `csharp-primary-constructor` | 使用 C# 12 主建構子 (Primary Constructor) 進行依賴注入的最佳實踐。 |
-| `csharp-result-pattern` | 使用 Result 模式代替異常丟出，處理業務邏輯錯誤與回應狀態。 |
 | `ddd-patterns` | 領域驅動設計 (DDD) 在 .NET Web API 中的實作模式，包含實體、值物件與聚合根建模。 |
 | `dependency-injection` | ASP.NET Core 依賴注入 (DI) 的生命週期管理與避免常駐相依性 (Captive Dependency) 陷阱。 |
 | `efcore-async-patterns` | Entity Framework Core 非同步操作的最佳實踐與常見效能防護。 |
@@ -172,8 +170,10 @@ use dotnet skill, 建立 Product Entity 符合 DDD 原則
 | `minimal-apis` | ASP.NET Core Minimal API 的端點群組、依賴注入與結果回傳的最佳實踐。 |
 | `openapi-best-practices` | 配置高品質 OpenAPI / Swagger 文件、XML 註解與回應型別標籤的最佳實踐。 |
 | `options-pattern` | 使用 Options 模式進行強型別設定載入與監控的配置指南。 |
+| `primary-constructor` | 使用 C# 12 主建構子 (Primary Constructor) 進行依賴注入的最佳實踐。 |
 | `program-cs-extensions` | 使用擴充方法優化 Program.cs 的服務註冊與中介軟體管道配置。 |
 | `response-patterns` | ASP.NET Core API 回應格式規範，必須遵循 RFC 9457 標準，使用標準 HTTP 狀態碼與 ProblemDetails 格式。 |
+| `result-pattern` | 使用 Result 模式代替異常丟出，處理業務邏輯錯誤與回應狀態。 |
 | `structured-logging` | 結構化日誌最佳實踐，包含具名範本、LoggerMessage 高效能日誌與日誌上下文 (Scope) 設計。 |
 | `testing-practices` | 使用 xUnit、NSubstitute 與 FluentAssertions 撰寫單元測試與整合測試的最佳實踐。 |
 <!-- SKILLS_LIST_END -->
@@ -182,7 +182,7 @@ use dotnet skill, 建立 Product Entity 符合 DDD 原則
 
 ## 💡 Before / After 使用範例
 
-### `csharp-primary-constructor`
+### `primary-constructor`
 
 > 提示詞：`use dotnet skill, 建立一個 UserService 注入 IUserRepository`
 
@@ -212,7 +212,7 @@ public class UserService(IUserRepository repository)
 
 ---
 
-### `csharp-coding-standards`
+### `coding-standards`
 
 > 提示詞：`use dotnet skill, 建立 Product 類別`
 
@@ -397,6 +397,8 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
 MIT License — Copyright (c) 2026 Andy Chang
 
 詳見 [LICENSE](LICENSE)。
+
+
 
 
 

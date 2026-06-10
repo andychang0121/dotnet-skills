@@ -1,5 +1,5 @@
-﻿---
-name: csharp-result-pattern
+---
+name: result-pattern
 description: Use Result<T> pattern instead of throwing exceptions for business logic errors in ASP.NET Core. Use exceptions only for truly unexpected system errors. Provides Success/Failure factory methods and clean Controller unwrapping.
 description_zh: 使用 Result 模式代替異常丟出，處理業務邏輯錯誤與回應狀態。
 invocable: false

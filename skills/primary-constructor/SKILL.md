@@ -1,5 +1,5 @@
-﻿---
-name: csharp-primary-constructor
+---
+name: primary-constructor
 description: Use C# 12 Primary Constructor for dependency injection in ASP.NET Core. Eliminates boilerplate private readonly fields. Use for DI injection only. Prefer traditional constructor when initialization logic is needed.
 description_zh: 使用 C# 12 主建構子 (Primary Constructor) 進行依賴注入的最佳實踐。
 invocable: false
