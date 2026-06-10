@@ -123,12 +123,17 @@ use dotnet skill, 建立 Product Entity 符合 DDD 原則
 | `csharp-primary-constructor` | Use C# 12 Primary Constructor for dependency injection in ASP.NET Core. Eliminates boilerplate private readonly fields. Use for DI injection only. Prefer traditional constructor when initialization logic is needed. |
 | `csharp-result-pattern` | Use Result<T> pattern instead of throwing exceptions for business logic errors in ASP.NET Core. Use exceptions only for truly unexpected system errors. Provides Success/Failure factory methods and clean Controller unwrapping. |
 | `dotnet-background-services` | Implement background tasks in ASP.NET Core using BackgroundService or IHostedService. Correctly handle CancellationToken for graceful shutdown. Avoid blocking in ExecuteAsync. Use IDbContextFactory for database access in background services. |
+| `dotnet-caching-patterns` | Implementing local and distributed caching strategies, using HybridCache (.NET 9), Cache-Aside, and race condition prevention. |
 | `dotnet-ddd-patterns` | Domain-Driven Design patterns for ASP.NET Core REST APIs. Implement Entity, Value Object, Aggregate Root, Domain Service, and Repository pattern. Integrate DDD with Clean Architecture. Keep domain logic inside domain objects, not services. |
 | `dotnet-di-patterns` | ASP.NET Core dependency injection best practices. Understand Singleton/Scoped/Transient lifetimes. Avoid Captive Dependency (injecting Scoped into Singleton). Use .NET 8 Keyed Services. Always depend on interfaces, not implementations. |
 | `dotnet-options-pattern` | Configure ASP.NET Core settings using IOptions<T>, IOptionsMonitor<T>, and IOptionsSnapshot<T>. Know when to use each variant. Bind configuration sections to strongly-typed classes. Avoid magic strings in configuration access. |
+| `dotnet-testing-practices` | Best practices for writing unit and integration tests in .NET using xUnit, NSubstitute, FluentAssertions, and WebApplicationFactory. |
 | `efcore-async-patterns` | EF Core async/await best practices. Always use SaveChangesAsync, FirstOrDefaultAsync, ToListAsync. Never use .Result or .Wait(). Apply AsNoTracking() for read-only queries. Avoid N+1 queries with proper Include. Always pass CancellationToken. |
+| `efcore-performance` | EF Core performance optimization techniques, including AsNoTracking, split queries, and high-performance batch operations. |
+| `fluent-validation-patterns` | Designing clean request validation using FluentValidation, automatic dependency injection registration, and standardized error responses. |
 | `middleware` | Create custom ASP.NET Core middleware using IMiddleware interface, convention-based approach, or lambda. Implement global exception handling with IExceptionHandler (.NET 8+) and RFC 9457 ProblemDetails format. Understand middleware pipeline ordering. |
 | `minimal-apis` | Best practices for ASP.NET Core Minimal APIs. Include Route Groups, Dependency Injection, TypedResults, and validation. |
+| `openapi-best-practices` | Best practices for configuring high-quality OpenAPI/Swagger documentation, utilizing XML comments, and specifying accurate response types. |
 | `program-cs-extensions` | Organize ASP.NET Core Program.cs using IServiceCollection and IApplicationBuilder extension methods. Avoid bloated Program.cs by grouping service registrations into layered AddXxx() and UseXxx() methods. Follow middleware pipeline ordering. |
 | `response-patterns` | Correct usage of ASP.NET Core IActionResult response methods. Use Ok(), BadRequest(), NotFound(), NoContent(), CreatedAtAction() for appropriate HTTP status codes. Standardize error responses using ProblemDetails (RFC 9457). |
 | `structured-logging` | Structured logging best practices for .NET. Use message templates with named properties instead of string interpolation, apply high-performance [LoggerMessage] source generator, and enrich logs with BeginScope. |
@@ -353,6 +358,8 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
 MIT License — Copyright (c) 2026 Andy Chang
 
 詳見 [LICENSE](LICENSE)。
+
+
 
 
 

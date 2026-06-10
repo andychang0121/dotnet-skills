@@ -22,7 +22,12 @@
     "./skills/csharp-coding-standards",
     "./skills/dotnet-ddd-patterns",
     "./skills/minimal-apis",
-    "./skills/structured-logging"
+    "./skills/structured-logging",
+    "./skills/dotnet-testing-practices",
+    "./skills/fluent-validation-patterns",
+    "./skills/dotnet-caching-patterns",
+    "./skills/efcore-performance",
+    "./skills/openapi-best-practices"
   ],
   "agents": [
     "./agents/dotnet-api-specialist.md"
