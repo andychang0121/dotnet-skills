@@ -7,6 +7,7 @@
 - `.gitignore`、`LICENSE`（MIT）
 - `README.md`（含多工具安裝說明、Before/After 範例）
 - `CHANGELOG.md`（0.1.0）
+- **分支**：`master`（穩定發布）、`dev`（開發用）
 - `AGENTS.md`（開發指南）
 - `.claude-plugin/plugin.json`、`.claude-plugin/marketplace.json`
 
@@ -45,7 +46,7 @@
 ### GitHub Actions（3 個）
 
 - `validate-skills.yml`（PR 驗證）
-- `sync-to-main.yml`（手動同步）
+- [x] `sync-to-master.yml`（手動同步至 master）
 - `release.yml`（semver tag Release）
 
 ## 驗證結果

@@ -49,12 +49,10 @@
 - [x] `async-efcore-query`（efcore-async-patterns）
 - [x] `primary-constructor`（csharp-primary-constructor）
 - [x] `controller-response`（aspnetcore-controller-best-practices）
-- [x] `di-lifetime`（dotnet-di-patterns）
+- [x] **分支**：`master`（穩定發布）、`dev`（開發用）dotnet-di-patterns）
 
-## 階段七：GitHub Actions
-
-- [x] `validate-skills.yml`（PR 自動驗證）
-- [x] `sync-to-main.yml`（手動同步至 main）
+## 階段七：4. GitHub Actions 自動建立 Release 並同步至 `master`lidate-skills.yml`（PR 自動驗證）
+- [x] `sync-to-master.yml`（手動同步至 master）
 - [x] `release.yml`（semver tag 觸發建立 Release）
 
 ## 階段八：最終驗證

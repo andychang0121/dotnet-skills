@@ -1,6 +1,6 @@
 # dotnet-skills 安裝腳本
 # 使用方式：在你的專案目錄執行此腳本
-# iwr https://raw.githubusercontent.com/andychang0121/dotnet-skills/main/scripts/install.ps1 | iex
+# iwr https://raw.githubusercontent.com/andychang0121/dotnet-skills/master/scripts/install.ps1 | iex
 
 param(
     [string]$ProjectPath = "",  # 專案路徑（空白則自動偵測或互動詢問）
@@ -11,7 +11,7 @@ param(
 # 避免環境設定了 $ErrorActionPreference = "Stop" 導致 git clone 警告被誤判為終止錯誤
 $ErrorActionPreference = "Continue"
 
-$RepoRaw = "https://raw.githubusercontent.com/andychang0121/dotnet-skills/main"
+$RepoRaw = "https://raw.githubusercontent.com/andychang0121/dotnet-skills/master"
 $RepoUrl = "https://github.com/andychang0121/dotnet-skills.git"
 
 # 修正中文亂碼問題
