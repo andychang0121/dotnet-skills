@@ -9,6 +9,16 @@
 
 ---
 
+# .NET Skills 專案說明
+
+此專案已完成以下更新：
+- 所有文件、工作流程與腳本中指向 `main` 分支的引用已全部改為 `master`。
+- 新增 `sync-to-master.yml` 工作流程以同步 `dev` 分支至 `master`。
+- `release.yml` 中的快速安裝指令已更新為使用 `master` 分支的腳本 URL。
+- `implementation_plan.md` 中的 GitHub Actions 表格已更新相應項目。
+
+以上變更確保專案在 `master` 為主要分支的環境中正常運作。
+
 ## 📋 系統需求 (System Requirements)
 
 使用本技能包自動生成的程式碼需要滿足以下最低開發環境需求：
@@ -425,6 +435,7 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
 MIT License — Copyright (c) 2026 Andy Chang
 
 詳見 [LICENSE](LICENSE)。
+
 
 
 

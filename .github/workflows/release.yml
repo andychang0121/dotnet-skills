@@ -30,7 +30,7 @@ jobs:
             ### 快速安裝
 
             ```powershell
-            PowerShell -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/andychang0121/dotnet-skills/main/scripts/install.ps1 | iex"
+            PowerShell -ExecutionPolicy Bypass -Command "iwr https://raw.githubusercontent.com/andychang0121/dotnet-skills/master/scripts/install.ps1 | iex"
             ```
           draft: false
           prerelease: false

@@ -80,7 +80,7 @@ invocable: false
 1. 更新 `.claude-plugin/plugin.json` 的 `version` 欄位
 2. 更新 `CHANGELOG.md`
 3. Push semver tag：`git tag v0.x.0 && git push origin v0.x.0`
-4. GitHub Actions 自動建立 Release 並同步至 `main`
+4. GitHub Actions 自動建立 Release 並同步至 `master`
 
 ## Eval 規格
 

@@ -2,7 +2,7 @@ name: 驗證 Skills 結構
 
 on:
   pull_request:
-    branches: [dev, main]
+    branches: [dev, master]
     paths:
       - 'skills/**'
       - '.claude-plugin/**'

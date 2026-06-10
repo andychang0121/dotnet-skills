@@ -23,7 +23,7 @@
 
 - **建立位置**：`D:\Project\dotnet-skills`
 - **GitHub**：`andychang0121/dotnet-skills`（開源，MIT License）
-- **分支**：`main`（穩定發布）、`dev`（開發用）
+- **分支**：`master`（穩定發布）、`dev`（開發用）
 
 ---
 
