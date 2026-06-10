@@ -1,7 +1,7 @@
-﻿---
+---
 name: response-patterns
-description: Correct usage of ASP.NET Core IActionResult response methods. Use Ok(), BadRequest(), NotFound(), NoContent(), CreatedAtAction() for appropriate HTTP status codes. Standardize error responses using ProblemDetails (RFC 9457).
-description_zh: ASP.NET Core API 回應格式規範，使用標準 HTTP 狀態碼與 ProblemDetails 格式。
+description: Correct usage of ASP.NET Core IActionResult response methods. Use Ok(), BadRequest(), NotFound(), NoContent(), CreatedAtAction() for appropriate HTTP status codes. Standardize error responses using ProblemDetails (RFC 9457).
+description_zh: ASP.NET Core API 回應格式規範，必須遵循 RFC 9457 標準，使用標準 HTTP 狀態碼與 ProblemDetails 格式。
 invocable: false
 ---
 

@@ -174,7 +174,7 @@ use dotnet skill, 建立 Product Entity 符合 DDD 原則
 | `minimal-apis` | ASP.NET Core Minimal API 的端點群組、依賴注入與結果回傳的最佳實踐。 |
 | `openapi-best-practices` | 配置高品質 OpenAPI / Swagger 文件、XML 註解與回應型別標籤的最佳實踐。 |
 | `program-cs-extensions` | 使用擴充方法優化 Program.cs 的服務註冊與中介軟體管道配置。 |
-| `response-patterns` | ASP.NET Core API 回應格式規範，使用標準 HTTP 狀態碼與 ProblemDetails 格式。 |
+| `response-patterns` | ASP.NET Core API 回應格式規範，必須遵循 RFC 9457 標準，使用標準 HTTP 狀態碼與 ProblemDetails 格式。 |
 | `structured-logging` | 結構化日誌最佳實踐，包含具名範本、LoggerMessage 高效能日誌與日誌上下文 (Scope) 設計。 |
 <!-- SKILLS_LIST_END -->
 
@@ -397,6 +397,8 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
 MIT License — Copyright (c) 2026 Andy Chang
 
 詳見 [LICENSE](LICENSE)。
+
+
 
 
 
