@@ -1,6 +1,7 @@
 ---
 name: skill-name-in-kebab-case
 description: A clear English description for AI keyword matching, detailing specifically when this skill should be invoked.
+description_zh: 繁體中文說明（用以在 README.md 呈現）
 invocable: false
 ---
 

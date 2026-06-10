@@ -1,6 +1,7 @@
----
+﻿---
 name: dotnet-ddd-patterns
-description: Domain-Driven Design patterns for ASP.NET Core REST APIs. Implement Entity, Value Object, Aggregate Root, Domain Service, and Repository pattern. Integrate DDD with Clean Architecture. Keep domain logic inside domain objects, not services.
+description: Domain-Driven Design patterns for ASP.NET Core REST APIs. Implement Entity, Value Object, Aggregate Root, Domain Service, and Repository pattern. Integrate DDD with Clean Architecture. Keep domain logic inside domain objects, not services.
+description_zh: 領域驅動設計 (DDD) 在 .NET Web API 中的實作模式，包含實體、值物件與聚合根建模。
 invocable: false
 ---
 

@@ -1,6 +1,7 @@
----
+﻿---
 name: clean-architecture-layers
-description: Clean Architecture layering for ASP.NET Core APIs. Domain -> Application -> Infrastructure -> Api dependency direction. Controllers must not directly access DbContext. Services injected via interfaces. DTOs separate from Entities.
+description: Clean Architecture layering for ASP.NET Core APIs. Domain -> Application -> Infrastructure -> Api dependency direction. Controllers must not directly access DbContext. Services injected via interfaces. DTOs separate from Entities.
+description_zh: ASP.NET Core API 的乾淨架構分層規範，定義 Domain -> Application -> Infrastructure -> Api 的依賴方向。
 invocable: false
 ---
 

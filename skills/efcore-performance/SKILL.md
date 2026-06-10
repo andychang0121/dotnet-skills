@@ -1,6 +1,7 @@
----
+﻿---
 name: efcore-performance
 description: EF Core performance optimization techniques, including AsNoTracking, split queries, and high-performance batch operations.
+description_zh: Entity Framework Core 效能調優，包含 AsNoTracking、拆分查詢與批次更新/刪除。
 invocable: false
 ---
 

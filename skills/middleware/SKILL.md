@@ -1,6 +1,7 @@
----
+﻿---
 name: middleware
-description: Create custom ASP.NET Core middleware using IMiddleware interface, convention-based approach, or lambda. Implement global exception handling with IExceptionHandler (.NET 8+) and RFC 9457 ProblemDetails format. Understand middleware pipeline ordering.
+description: Create custom ASP.NET Core middleware using IMiddleware interface, convention-based approach, or lambda. Implement global exception handling with IExceptionHandler (.NET 8+) and RFC 9457 ProblemDetails format. Understand middleware pipeline ordering.
+description_zh: 客製化中介軟體 (Middleware) 的開發規範與全域異常處理器 (IExceptionHandler) 的整合。
 invocable: false
 ---
 

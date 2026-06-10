@@ -18,13 +18,21 @@ foreach ($dir in Get-ChildItem -Path $SkillsDir -Directory | Sort-Object Name) {
 
     $content = Get-Content $skillMd -Raw -Encoding UTF8
     $nameMatch = [regex]::Match($content, "(?m)^name:\s*(.+)$")
+    $descZhMatch = [regex]::Match($content, "(?m)^description_zh:\s*(.+)$")
     $descMatch = [regex]::Match($content, "(?m)^description:\s*(.+)$")
 
-    if ($nameMatch.Success -and $descMatch.Success) {
+    if ($nameMatch.Success) {
+        $finalDesc = ""
+        if ($descZhMatch.Success) {
+            $finalDesc = $descZhMatch.Groups[1].Value.Trim()
+        } elseif ($descMatch.Success) {
+            $finalDesc = $descMatch.Groups[1].Value.Trim()
+        }
+
         $skills += [PSCustomObject]@{
             Directory   = $dir.Name
             Name        = $nameMatch.Groups[1].Value.Trim()
-            Description = $descMatch.Groups[1].Value.Trim()
+            Description = $finalDesc
         }
         Write-Host "  ✅ $($dir.Name)" -ForegroundColor Green
     }

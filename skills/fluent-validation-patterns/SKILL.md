@@ -1,6 +1,7 @@
----
+﻿---
 name: fluent-validation-patterns
 description: Designing clean request validation using FluentValidation, automatic dependency injection registration, and standardized error responses.
+description_zh: 使用 FluentValidation 進行強型別請求驗證、自動註冊與 ProblemDetails 整合的實作規範。
 invocable: false
 ---
 

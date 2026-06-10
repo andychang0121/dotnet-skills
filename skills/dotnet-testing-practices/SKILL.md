@@ -1,6 +1,7 @@
----
+﻿---
 name: dotnet-testing-practices
 description: Best practices for writing unit and integration tests in .NET using xUnit, NSubstitute, FluentAssertions, and WebApplicationFactory.
+description_zh: 使用 xUnit、NSubstitute 與 FluentAssertions 撰寫單元測試與整合測試的最佳實踐。
 invocable: false
 ---
 

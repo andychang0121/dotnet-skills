@@ -1,6 +1,7 @@
----
+﻿---
 name: openapi-best-practices
 description: Best practices for configuring high-quality OpenAPI/Swagger documentation, utilizing XML comments, and specifying accurate response types.
+description_zh: 配置高品質 OpenAPI / Swagger 文件、XML 註解與回應型別標籤的最佳實踐。
 invocable: false
 ---
 

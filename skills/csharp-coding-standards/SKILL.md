@@ -1,6 +1,7 @@
----
+﻿---
 name: csharp-coding-standards
-description: C# coding standards for .NET 8/10. Use explicit types instead of var. Use expression-body members (=>) for simple methods and properties. Apply Traditional Chinese XML summary to all class/struct/record fields and methods with usage examples. Follow C# naming conventions.
+description: C# coding standards for .NET 8/10. Use explicit types instead of var. Use expression-body members (=>) for simple methods and properties. Apply Traditional Chinese XML summary to all class/struct/record fields and methods with usage examples. Follow C# naming conventions.
+description_zh: 針對 .NET 8/10 的 C# 程式碼編寫與型別宣告規範。
 invocable: false
 ---
 

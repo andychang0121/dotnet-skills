@@ -147,26 +147,26 @@ use dotnet skill, 建立 Product Entity 符合 DDD 原則
 <!-- SKILLS_LIST_START -->
 | Skill | 說明 |
 |-------|------|
-| `clean-architecture-layers` | Clean Architecture layering for ASP.NET Core APIs. Domain -> Application -> Infrastructure -> Api dependency direction. Controllers must not directly access DbContext. Services injected via interfaces. DTOs separate from Entities. |
-| `controller-apis` | ASP.NET Core MVC Controller best practices. Use [ApiController] and [ProducesResponseType] attributes. Follow REST route naming conventions. Return IActionResult or ActionResult<T>. Keep controllers thin by delegating business logic to services. |
-| `csharp-coding-standards` | C# coding standards for .NET 8/10. Use explicit types instead of var. Use expression-body members (=>) for simple methods and properties. Apply Traditional Chinese XML summary to all class/struct/record fields and methods with usage examples. Follow C# naming conventions. |
-| `csharp-primary-constructor` | Use C# 12 Primary Constructor for dependency injection in ASP.NET Core. Eliminates boilerplate private readonly fields. Use for DI injection only. Prefer traditional constructor when initialization logic is needed. |
-| `csharp-result-pattern` | Use Result<T> pattern instead of throwing exceptions for business logic errors in ASP.NET Core. Use exceptions only for truly unexpected system errors. Provides Success/Failure factory methods and clean Controller unwrapping. |
-| `dotnet-background-services` | Implement background tasks in ASP.NET Core using BackgroundService or IHostedService. Correctly handle CancellationToken for graceful shutdown. Avoid blocking in ExecuteAsync. Use IDbContextFactory for database access in background services. |
-| `dotnet-caching-patterns` | Implementing local and distributed caching strategies, using HybridCache (.NET 9), Cache-Aside, and race condition prevention. |
-| `dotnet-ddd-patterns` | Domain-Driven Design patterns for ASP.NET Core REST APIs. Implement Entity, Value Object, Aggregate Root, Domain Service, and Repository pattern. Integrate DDD with Clean Architecture. Keep domain logic inside domain objects, not services. |
-| `dotnet-di-patterns` | ASP.NET Core dependency injection best practices. Understand Singleton/Scoped/Transient lifetimes. Avoid Captive Dependency (injecting Scoped into Singleton). Use .NET 8 Keyed Services. Always depend on interfaces, not implementations. |
-| `dotnet-options-pattern` | Configure ASP.NET Core settings using IOptions<T>, IOptionsMonitor<T>, and IOptionsSnapshot<T>. Know when to use each variant. Bind configuration sections to strongly-typed classes. Avoid magic strings in configuration access. |
-| `dotnet-testing-practices` | Best practices for writing unit and integration tests in .NET using xUnit, NSubstitute, FluentAssertions, and WebApplicationFactory. |
-| `efcore-async-patterns` | EF Core async/await best practices. Always use SaveChangesAsync, FirstOrDefaultAsync, ToListAsync. Never use .Result or .Wait(). Apply AsNoTracking() for read-only queries. Avoid N+1 queries with proper Include. Always pass CancellationToken. |
-| `efcore-performance` | EF Core performance optimization techniques, including AsNoTracking, split queries, and high-performance batch operations. |
-| `fluent-validation-patterns` | Designing clean request validation using FluentValidation, automatic dependency injection registration, and standardized error responses. |
-| `middleware` | Create custom ASP.NET Core middleware using IMiddleware interface, convention-based approach, or lambda. Implement global exception handling with IExceptionHandler (.NET 8+) and RFC 9457 ProblemDetails format. Understand middleware pipeline ordering. |
-| `minimal-apis` | Best practices for ASP.NET Core Minimal APIs. Include Route Groups, Dependency Injection, TypedResults, and validation. |
-| `openapi-best-practices` | Best practices for configuring high-quality OpenAPI/Swagger documentation, utilizing XML comments, and specifying accurate response types. |
-| `program-cs-extensions` | Organize ASP.NET Core Program.cs using IServiceCollection and IApplicationBuilder extension methods. Avoid bloated Program.cs by grouping service registrations into layered AddXxx() and UseXxx() methods. Follow middleware pipeline ordering. |
-| `response-patterns` | Correct usage of ASP.NET Core IActionResult response methods. Use Ok(), BadRequest(), NotFound(), NoContent(), CreatedAtAction() for appropriate HTTP status codes. Standardize error responses using ProblemDetails (RFC 9457). |
-| `structured-logging` | Structured logging best practices for .NET. Use message templates with named properties instead of string interpolation, apply high-performance [LoggerMessage] source generator, and enrich logs with BeginScope. |
+| `clean-architecture-layers` | ASP.NET Core API 的乾淨架構分層規範，定義 Domain -> Application -> Infrastructure -> Api 的依賴方向。 |
+| `controller-apis` | ASP.NET Core MVC Controller 開發最佳實踐，包含 RESTful 路由命名與回應型別標記。 |
+| `csharp-coding-standards` | 針對 .NET 8/10 的 C# 程式碼編寫與型別宣告規範。 |
+| `csharp-primary-constructor` | 使用 C# 12 主建構子 (Primary Constructor) 進行依賴注入的最佳實踐。 |
+| `csharp-result-pattern` | 使用 Result 模式代替異常丟出，處理業務邏輯錯誤與回應狀態。 |
+| `dotnet-background-services` | 在 ASP.NET Core 中實作 BackgroundService 背景服務與生命週期管理的最佳實踐。 |
+| `dotnet-caching-patterns` | 實作記憶體快取、分散式快取與防擊穿鎖定的快取策略指南。 |
+| `dotnet-ddd-patterns` | 領域驅動設計 (DDD) 在 .NET Web API 中的實作模式，包含實體、值物件與聚合根建模。 |
+| `dotnet-di-patterns` | ASP.NET Core 依賴注入 (DI) 的生命週期管理與避免常駐相依性 (Captive Dependency) 陷阱。 |
+| `dotnet-options-pattern` | 使用 Options 模式進行強型別設定載入與監控的配置指南。 |
+| `dotnet-testing-practices` | 使用 xUnit、NSubstitute 與 FluentAssertions 撰寫單元測試與整合測試的最佳實踐。 |
+| `efcore-async-patterns` | Entity Framework Core 非同步操作的最佳實踐與常見效能防護。 |
+| `efcore-performance` | Entity Framework Core 效能調優，包含 AsNoTracking、拆分查詢與批次更新/刪除。 |
+| `fluent-validation-patterns` | 使用 FluentValidation 進行強型別請求驗證、自動註冊與 ProblemDetails 整合的實作規範。 |
+| `middleware` | 客製化中介軟體 (Middleware) 的開發規範與全域異常處理器 (IExceptionHandler) 的整合。 |
+| `minimal-apis` | ASP.NET Core Minimal API 的端點群組、依賴注入與結果回傳的最佳實踐。 |
+| `openapi-best-practices` | 配置高品質 OpenAPI / Swagger 文件、XML 註解與回應型別標籤的最佳實踐。 |
+| `program-cs-extensions` | 使用擴充方法優化 Program.cs 的服務註冊與中介軟體管道配置。 |
+| `response-patterns` | ASP.NET Core API 回應格式規範，使用標準 HTTP 狀態碼與 ProblemDetails 格式。 |
+| `structured-logging` | 結構化日誌最佳實踐，包含具名範本、LoggerMessage 高效能日誌與日誌上下文 (Scope) 設計。 |
 <!-- SKILLS_LIST_END -->
 
 ---
@@ -388,6 +388,8 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
 MIT License — Copyright (c) 2026 Andy Chang
 
 詳見 [LICENSE](LICENSE)。
+
+
 
 
 

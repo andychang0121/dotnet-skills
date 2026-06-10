@@ -1,6 +1,7 @@
----
+﻿---
 name: dotnet-background-services
-description: Implement background tasks in ASP.NET Core using BackgroundService or IHostedService. Correctly handle CancellationToken for graceful shutdown. Avoid blocking in ExecuteAsync. Use IDbContextFactory for database access in background services.
+description: Implement background tasks in ASP.NET Core using BackgroundService or IHostedService. Correctly handle CancellationToken for graceful shutdown. Avoid blocking in ExecuteAsync. Use IDbContextFactory for database access in background services.
+description_zh: 在 ASP.NET Core 中實作 BackgroundService 背景服務與生命週期管理的最佳實踐。
 invocable: false
 ---
 

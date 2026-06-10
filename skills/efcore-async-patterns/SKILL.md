@@ -1,6 +1,7 @@
----
+﻿---
 name: efcore-async-patterns
-description: EF Core async/await best practices. Always use SaveChangesAsync, FirstOrDefaultAsync, ToListAsync. Never use .Result or .Wait(). Apply AsNoTracking() for read-only queries. Avoid N+1 queries with proper Include. Always pass CancellationToken.
+description: EF Core async/await best practices. Always use SaveChangesAsync, FirstOrDefaultAsync, ToListAsync. Never use .Result or .Wait(). Apply AsNoTracking() for read-only queries. Avoid N+1 queries with proper Include. Always pass CancellationToken.
+description_zh: Entity Framework Core 非同步操作的最佳實踐與常見效能防護。
 invocable: false
 ---
 

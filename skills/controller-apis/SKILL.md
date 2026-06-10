@@ -1,6 +1,7 @@
----
+﻿---
 name: controller-apis
-description: ASP.NET Core MVC Controller best practices. Use [ApiController] and [ProducesResponseType] attributes. Follow REST route naming conventions. Return IActionResult or ActionResult<T>. Keep controllers thin by delegating business logic to services.
+description: ASP.NET Core MVC Controller best practices. Use [ApiController] and [ProducesResponseType] attributes. Follow REST route naming conventions. Return IActionResult or ActionResult<T>. Keep controllers thin by delegating business logic to services.
+description_zh: ASP.NET Core MVC Controller 開發最佳實踐，包含 RESTful 路由命名與回應型別標記。
 invocable: false
 ---
 

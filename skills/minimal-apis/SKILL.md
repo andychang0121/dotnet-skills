@@ -1,6 +1,7 @@
----
+﻿---
 name: minimal-apis
 description: Best practices for ASP.NET Core Minimal APIs. Include Route Groups, Dependency Injection, TypedResults, and validation.
+description_zh: ASP.NET Core Minimal API 的端點群組、依賴注入與結果回傳的最佳實踐。
 invocable: false
 ---
 

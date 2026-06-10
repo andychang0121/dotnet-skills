@@ -1,6 +1,7 @@
----
+﻿---
 name: program-cs-extensions
-description: Organize ASP.NET Core Program.cs using IServiceCollection and IApplicationBuilder extension methods. Avoid bloated Program.cs by grouping service registrations into layered AddXxx() and UseXxx() methods. Follow middleware pipeline ordering.
+description: Organize ASP.NET Core Program.cs using IServiceCollection and IApplicationBuilder extension methods. Avoid bloated Program.cs by grouping service registrations into layered AddXxx() and UseXxx() methods. Follow middleware pipeline ordering.
+description_zh: 使用擴充方法優化 Program.cs 的服務註冊與中介軟體管道配置。
 invocable: false
 ---
 

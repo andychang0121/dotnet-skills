@@ -1,6 +1,7 @@
----
+﻿---
 name: dotnet-di-patterns
-description: ASP.NET Core dependency injection best practices. Understand Singleton/Scoped/Transient lifetimes. Avoid Captive Dependency (injecting Scoped into Singleton). Use .NET 8 Keyed Services. Always depend on interfaces, not implementations.
+description: ASP.NET Core dependency injection best practices. Understand Singleton/Scoped/Transient lifetimes. Avoid Captive Dependency (injecting Scoped into Singleton). Use .NET 8 Keyed Services. Always depend on interfaces, not implementations.
+description_zh: ASP.NET Core 依賴注入 (DI) 的生命週期管理與避免常駐相依性 (Captive Dependency) 陷阱。
 invocable: false
 ---
 

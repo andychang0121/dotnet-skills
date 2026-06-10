@@ -1,6 +1,7 @@
----
+﻿---
 name: structured-logging
 description: Structured logging best practices for .NET. Use message templates with named properties instead of string interpolation, apply high-performance [LoggerMessage] source generator, and enrich logs with BeginScope.
+description_zh: 結構化日誌最佳實踐，包含具名範本、LoggerMessage 高效能日誌與日誌上下文 (Scope) 設計。
 invocable: false
 ---
 
