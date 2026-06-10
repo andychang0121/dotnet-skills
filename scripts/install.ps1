@@ -75,7 +75,7 @@ Write-Host ""
 # 詢問 AI 工具
 if ($ToolChoice -eq 0) {
     Write-Host "請選擇您的 AI 開發工具：" -ForegroundColor Yellow
-    Write-Host "  1. VS Code (GitHub Copilot)"
+    Write-Host "  1. VS Code / Visual Studio (GitHub Copilot)"
     Write-Host "  2. Cursor"
     Write-Host "  3. Antigravity (Google)"
     Write-Host ""
@@ -100,7 +100,7 @@ $ConfigTarget = switch ($ToolChoice) {
 }
 
 $ToolName = switch ($ToolChoice) {
-    1 { "VS Code (GitHub Copilot)" }
+    1 { "VS Code / Visual Studio (GitHub Copilot)" }
     2 { "Cursor" }
     3 { "Antigravity (Google)" }
 }

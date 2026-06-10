@@ -73,7 +73,7 @@ function Get-ToolPaths($choice, $path) {
         3 { Join-Path $path ".agents/AGENTS.md" }
     }
     $name = switch ($choice) {
-        1 { "VS Code (GitHub Copilot)" }
+        1 { "VS Code / Visual Studio (GitHub Copilot)" }
         2 { "Cursor" }
         3 { "Antigravity (Google)" }
     }
