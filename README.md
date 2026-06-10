@@ -9,6 +9,15 @@
 
 ---
 
+## 📋 系統需求 (System Requirements)
+
+使用本技能包自動生成的程式碼需要滿足以下最低開發環境需求：
+
+- **.NET SDK**：`.NET 8.0` 或更高版本 (支援 .NET 9.0/10.0)
+- **C# 語言版本**：`C# 12` 或更高版本 (主建構子 Primary Constructors 的最低需求)
+
+---
+
 ## ⚡ 快速開始 (Quick Start)
 
 只需三步，即可在你的 .NET 專案中啟用或移除這套技能包：
@@ -388,6 +397,7 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
 MIT License — Copyright (c) 2026 Andy Chang
 
 詳見 [LICENSE](LICENSE)。
+
 
 
 
