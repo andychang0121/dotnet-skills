@@ -1,4 +1,4 @@
-# .NET Skills — .NET 8/10 RESTful API 開發技能包
+﻿# .NET Skills — .NET 8/10 RESTful API 開發技能包
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](CHANGELOG.md)
@@ -114,48 +114,23 @@ use dotnet skill, 建立 Product Entity 符合 DDD 原則
 
 ## 📚 Skills 清單
 
-### 架構類
-
-| Skill | 說明 | 類型 |
-|-------|------|------|
-| `clean-architecture-layers` | Clean Architecture 分層原則，Controller 不直接操作 DbContext | Efficiency |
-| `dotnet-ddd-patterns` | DDD 核心概念（Entity / Value Object / Aggregate / Domain Service / Repository） | Efficiency |
-
-### C# 語言類
-
-| Skill | 說明 | 類型 |
-|-------|------|------|
-| `csharp-primary-constructor` | C# 12 Primary Constructor 現代注入寫法 | Efficiency |
-| `csharp-coding-standards` | 明確型別、Expression-body、繁體中文註解、XML summary | Capability |
-| `csharp-result-pattern` | `Result<T>` 取代業務錯誤 Exception | Efficiency |
-
-### ASP.NET Core 類
-
-| Skill | 說明 | 類型 |
-|-------|------|------|
-| `aspnetcore-controller-best-practices` | `[ApiController]`、`[ProducesResponseType]`、Route 命名 | Efficiency |
-| `aspnetcore-program-cs-extensions` | Program.cs Extension Method 分層整理 | Efficiency |
-| `aspnetcore-response-patterns` | `Ok()`/`BadRequest()`/`NotFound()` 使用場景 | Capability |
-| `aspnetcore-middleware` | 自定義 Middleware、RFC 9457 全域例外處理 | Efficiency |
-
-### DI 與設定類
-
-| Skill | 說明 | 類型 |
-|-------|------|------|
-| `dotnet-di-patterns` | Singleton/Scoped/Transient 生命週期、Captive Dependency | Capability |
-| `dotnet-options-pattern` | `IOptions<T>` vs `IOptionsMonitor<T>` vs `IOptionsSnapshot<T>` | Capability |
-
-### EF Core 類
-
-| Skill | 說明 | 類型 |
-|-------|------|------|
-| `efcore-async-patterns` | async/await 全面使用、AsNoTracking、N+1 問題 | Capability |
-
-### 背景服務類
-
-| Skill | 說明 | 類型 |
-|-------|------|------|
-| `dotnet-background-services` | `BackgroundService`、`CancellationToken` 正確取消模式 | Capability |
+<!-- SKILLS_LIST_START -->
+| Skill | 說明 |
+|-------|------|
+| `aspnetcore-controller-best-practices` | ASP.NET Core MVC Controller best practices. Use [ApiController] and [ProducesResponseType] attributes. Follow REST route naming conventions. Return IActionResult or ActionResult<T>. Keep controllers thin by delegating business logic to services. |
+| `aspnetcore-middleware` | Create custom ASP.NET Core middleware using IMiddleware interface, convention-based approach, or lambda. Implement global exception handling with IExceptionHandler (.NET 8+) and RFC 9457 ProblemDetails format. Understand middleware pipeline ordering. |
+| `aspnetcore-program-cs-extensions` | Organize ASP.NET Core Program.cs using IServiceCollection and IApplicationBuilder extension methods. Avoid bloated Program.cs by grouping service registrations into layered AddXxx() and UseXxx() methods. Follow middleware pipeline ordering. |
+| `aspnetcore-response-patterns` | Correct usage of ASP.NET Core IActionResult response methods. Use Ok(), BadRequest(), NotFound(), NoContent(), CreatedAtAction() for appropriate HTTP status codes. Standardize error responses using ProblemDetails (RFC 9457). |
+| `clean-architecture-layers` | Clean Architecture layering for ASP.NET Core APIs. Domain -> Application -> Infrastructure -> Api dependency direction. Controllers must not directly access DbContext. Services injected via interfaces. DTOs separate from Entities. |
+| `csharp-coding-standards` | C# coding standards for .NET 8/10. Use explicit types instead of var. Use expression-body members (=>) for simple methods and properties. Apply Traditional Chinese XML summary to all class/struct/record fields and methods with usage examples. Follow C# naming conventions. |
+| `csharp-primary-constructor` | Use C# 12 Primary Constructor for dependency injection in ASP.NET Core. Eliminates boilerplate private readonly fields. Use for DI injection only. Prefer traditional constructor when initialization logic is needed. |
+| `csharp-result-pattern` | Use Result<T> pattern instead of throwing exceptions for business logic errors in ASP.NET Core. Use exceptions only for truly unexpected system errors. Provides Success/Failure factory methods and clean Controller unwrapping. |
+| `dotnet-background-services` | Implement background tasks in ASP.NET Core using BackgroundService or IHostedService. Correctly handle CancellationToken for graceful shutdown. Avoid blocking in ExecuteAsync. Use IDbContextFactory for database access in background services. |
+| `dotnet-ddd-patterns` | Domain-Driven Design patterns for ASP.NET Core REST APIs. Implement Entity, Value Object, Aggregate Root, Domain Service, and Repository pattern. Integrate DDD with Clean Architecture. Keep domain logic inside domain objects, not services. |
+| `dotnet-di-patterns` | ASP.NET Core dependency injection best practices. Understand Singleton/Scoped/Transient lifetimes. Avoid Captive Dependency (injecting Scoped into Singleton). Use .NET 8 Keyed Services. Always depend on interfaces, not implementations. |
+| `dotnet-options-pattern` | Configure ASP.NET Core settings using IOptions<T>, IOptionsMonitor<T>, and IOptionsSnapshot<T>. Know when to use each variant. Bind configuration sections to strongly-typed classes. Avoid magic strings in configuration access. |
+| `efcore-async-patterns` | EF Core async/await best practices. Always use SaveChangesAsync, FirstOrDefaultAsync, ToListAsync. Never use .Result or .Wait(). Apply AsNoTracking() for read-only queries. Avoid N+1 queries with proper Include. Always pass CancellationToken. |
+<!-- SKILLS_LIST_END -->
 
 ---
 
@@ -376,3 +351,4 @@ public class GlobalExceptionHandler(ILogger<GlobalExceptionHandler> logger)
 MIT License — Copyright (c) 2026 Andy Chang
 
 詳見 [LICENSE](LICENSE)。
+
